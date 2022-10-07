@@ -1,4 +1,5 @@
 from flask import Flask, request, url_for
+import requests
 import pandas as pd
 from faker import Faker
 fake = Faker()
@@ -43,8 +44,9 @@ def mean():
 
 @app.route("/space/")
 def space():
-
-    return 'a'
+    r = requests.get('http://api.open-notify.org/astros.json')
+    astronauts = r.json()["number"]
+    return f'<p> Current number of astronauts in space are {astronauts}'
 
 
 @app.route('/')
