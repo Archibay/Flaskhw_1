@@ -10,19 +10,20 @@ app = Flask(__name__)
 @app.route("/requirements/")
 def requirements():
     with open('requirements.txt', 'r') as f:
-        lines = f.read().split()
-    return lines
+        t = f.readlines()
+        t = "<br>".join(t)
+    return t
 
 
 def randomize(count):
-    lst = []
+    st = ''
     for i in range(count):
         first_name = fake.first_name()
         last_name = fake.last_name()
         email = f"{first_name}.{last_name}@{fake.domain_name()}"
-        comb = f"{first_name} {last_name}; {email}"
-        lst.append(comb)
-    return lst
+        comb = f"{first_name} {last_name} -- {email}<br>"
+        st = st + str(comb)
+    return st
 
 
 @app.route('/generate-users/')
