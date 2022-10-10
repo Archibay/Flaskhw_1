@@ -1,0 +1,22 @@
+<!doctype html>
+<title>{% block title %}{% endblock %} - Tracks</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<nav>
+  <h1>Tracks</h1>
+  <ul>
+    <li><a href="{{ url_for('auth.names') }}">All unique artist</a>
+    <li><a href="{{ url_for('auth.tracks') }}">Quantity of tracks</a>
+    <li><a href="{{ url_for('auth.tracks/<genre>') }}">Quantity of tracks in genre</a>
+    <li><a href="{{ url_for('auth.tracks-sec') }}">Track names and there duration</a>
+    <li><a href="{{ url_for('auth.tracks-sec/statistics/') }}">Average track duration</a>
+  </ul>
+</nav>
+<section class="content">
+  <header>
+    {% block header %}{% endblock %}
+  </header>
+  {% for message in get_flashed_messages() %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
+  {% block content %}{% endblock %}
+</section>
