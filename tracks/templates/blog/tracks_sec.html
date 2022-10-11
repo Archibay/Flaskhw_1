@@ -5,6 +5,8 @@
 {% block head %}
 {% endblock %}
 {% block content %}
-    <h1>All unique artist:</h1>
-    <p>{{ ts }}</p>
+    <h1>Track names and there duration:</h1>
+    {% for i in ts %}
+        <p>{{ i.title, i.track_length }}</p>
+    {% endfor %}
 {% endblock %}
