@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}
+    <h2> Average track duration </h2>
+{% endblock %}
+{% block head %}
+{% endblock %}
+{% block content %}
+    <h1>Statistics:</h1>
+    {% for i in tss %}
+        <p>Average track duration: {{ i['avg'] }} <br> Summary track duration: {{ i['sum'] }}</p>
+    {% endfor %}
+{% endblock %}

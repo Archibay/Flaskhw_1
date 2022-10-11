@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}
+    <h2> Quantity of tracks in genre </h2>
+{% endblock %}
+{% block head %}
+{% endblock %}
+{% block content %}
+    <h1>Quantity of tracks in genre:</h1>
+    {% for i in cg %}
+        <p>{{ i['count'] }}</p>
+    {% endfor %}
+{% endblock %}
