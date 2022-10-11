@@ -5,8 +5,8 @@
 {% block head %}
 {% endblock %}
 {% block content %}
-    <h1>Average track duration:</h1>
-
-        <p>{{ tss }}</p>
-
+    <h1>Statistics:</h1>
+    {% for i in tss %}
+        <p>Average track duration: {{ i['avg'] }} <br> Summary track duration: {{ i['sum'] }}</p>
+    {% endfor %}
 {% endblock %}

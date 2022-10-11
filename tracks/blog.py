@@ -28,19 +28,20 @@ def names():
 def tracks():
     db = get_db()
     tr = db.execute(
-        'SELECT DISTINCT id FROM tracks'
+        'SELECT COUNT (id) as count FROM tracks'
     ).fetchall()
-    tr = len(tr)
     return render_template('blog/tracks.html', tr=tr)
 
 
-@bp.route('/tracks/<path:genre>')
-def cnt_genre(genre):
+@bp.route('/tracks/<int:genre_id>')
+def cnt_genre(genre_id):
     db = get_db()
     cg = db.execute(
-        'SELECT DISTINCT id FROM tracks WHERE Genre = ?', (genre,)
+        'SELECT COUNT (tracks.id) as count '
+        'FROM tracks '
+        'INNER JOIN genres on genres.id=tracks.genre_id '
+        'WHERE genre_id = ?', (genre_id,)
     ).fetchall()
-    cg = len(cg)
     return render_template('blog/cnt_genre.html', cg=cg)
 
 
@@ -57,7 +58,7 @@ def tracks_sec():
 def ts_statistics():
     db = get_db()
     tss = db.execute(
-        'SELECT SUM (track_length) FROM tracks'
+        'SELECT SUM (track_length) as sum, AVG (track_length) as avg FROM tracks'
     ).fetchall()
 
     return render_template('blog/ts_statistics.html', tss=tss)

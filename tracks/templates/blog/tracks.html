@@ -6,5 +6,7 @@
 {% endblock %}
 {% block content %}
     <h1>Quantity of tracks:</h1>
-    <p>{{ tr }}</p>
+    {% for i in tr %}
+        <p>{{ i['count'] }}</p>
+    {% endfor %}
 {% endblock %}

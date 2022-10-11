@@ -5,6 +5,8 @@
 {% block head %}
 {% endblock %}
 {% block content %}
-    <h1>Quantity of tracks in genre {{ genre }}:</h1>
-    <p>{{ cg }}</p>
+    <h1>Quantity of tracks in genre:</h1>
+    {% for i in cg %}
+        <p>{{ i['count'] }}</p>
+    {% endfor %}
 {% endblock %}

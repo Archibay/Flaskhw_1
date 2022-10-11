@@ -7,6 +7,6 @@
 {% block content %}
     <h1>Track names and there duration:</h1>
     {% for i in ts %}
-        <p>{{ i.title, i.track_length }}</p>
+        <p>{{ i['title'], i['track_length'] }}</p>
     {% endfor %}
 {% endblock %}
